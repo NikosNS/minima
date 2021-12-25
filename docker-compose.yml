@@ -6,6 +6,7 @@ services:
     image: nikosns/minima:latest
     container_name: alp_minima0
     restart: always
+    cpus: 0,5
     ports:
      - "9001:9001"
      - "9002:9002"
@@ -13,6 +14,7 @@ services:
     image: nikosns/minima:latest
     container_name: alp_minima1
     restart: always
+    cpus: 0,5
     ports:
      - "9011:9001"
      - "9012:9002"
@@ -20,6 +22,7 @@ services:
     image: nikosns/minima:latest
     container_name: alp_minima2
     restart: always
+    cpus: 0,5
     ports:
      - "9021:9001"
      - "9022:9002"
@@ -27,6 +30,7 @@ services:
     image: nikosns/minima:latest
     container_name: alp_minima3
     restart: always
+    cpus: 0,5
     ports:
      - "9031:9001"
      - "9032:9002"
