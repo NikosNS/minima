@@ -75,7 +75,6 @@ try:
     if upd == 1:
         time.sleep(1)
         print("Ok, let's go!")
-        subprocess.run(["pip", "install", "-r", "requirements.txt"])
         run_containers()
     elif upd == 2:
         print("Ok, wait for stopping containers")
