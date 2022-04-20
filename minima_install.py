@@ -78,9 +78,15 @@ try:
         subprocess.run(["pip", "install", "-r", "requirements.txt"])
         run_containers()
     elif upd == 2:
-        subprocess.run(["docker-compose", "down"])
-        subprocess.run(["docker", "pull", "nikosns/minima_amd:latest"])
-        run_containers()
+        print("Ok, wait for stopping containers")
+        if os.path.isdir("$HOME/minima"):
+            os.chdir("$HOME/minima")
+            subprocess.run(["docker-compose", "down"])
+            subprocess.run(["docker", "pull", "nikosns/minima_amd:latest"])
+            run_containers()
+        else:
+            print("Be aware that we didn't found minima directory, try run script on user that was on previous time")
+            exit(0)
 except KeyboardInterrupt:
     exit(1)
 
