@@ -17,7 +17,7 @@ def get_yml(count):
             count += 1
         for i in range(0, count):
             dc.write(str(
-                "  " + f"m{i+1}\n"
+                "  " + f"m{i+1}:\n"
                 "    " + "image: nikosns/minima_amd:latest\n"
                 "    " + f"container_name: alp_min{i+1}\n"
                 "    " + "restart: always\n"
@@ -75,6 +75,7 @@ try:
     if upd == 1:
         time.sleep(1)
         print("Ok, let's go!")
+        subprocess.run(["pip", "install", "-r", "requirements.txt"])
         run_containers()
     elif upd == 2:
         print("Ok, wait for stopping containers")
