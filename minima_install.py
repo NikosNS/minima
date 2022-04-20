@@ -4,6 +4,7 @@ import time
 
 
 def get_yml(count):
+    """This function creates docker-compose file by stamp for different count of containers and run it"""
     if os.path.exists("docker-compose.yml"):
         os.truncate("docker-compose.yml", 0)
     with open('docker-compose.yml', 'a') as dc:
@@ -27,13 +28,14 @@ def get_yml(count):
             ))
         dc.write("\n...")
         dc.close()
-
+        time.sleep(1)
         if os.path.exists("docker-compose.yml"):
             subprocess.run(["docker-compose", "up", "-d"])
             return 0
 
 
 def counter():
+    """This is just simple counter that is working when containers are making"""
     try:
         print("wait 60 sec")
         for i in range(0, 60):
@@ -45,13 +47,16 @@ def counter():
 
 
 def get_uid(count):
+    """That function helps us add uid in containers"""
     for i in range(0, count):
         uid = str(input("paste your uid "))
         subprocess.run(["docker", "exec", f"alp_min{i+1}", "curl", "127.0.0.1:9002/incentivecash+uid:"+uid])
 
 
 def run_containers():
+    """Function that start all previous functions one by one"""
     if get_yml(count) == 0:
+        time.sleep(1)
         print("file for docker-compose created\nand containers are started")
         if counter() == 0:
             print("time to start uid")
